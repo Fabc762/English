@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Launcher Web - Optimizado</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #ffffff; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* --- BANNER SUPERIOR --- */
+        .header-container {
+            width: 100%;
+            height: 22vh; 
+            min-height: 150px;
+            position: relative;
+        }
+
+        .header-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .settings-btn {
+            position: absolute;
+            top: 20px;
+            right: 15px;
+            width: 9vw;
+            max-width: 40px;
+            height: auto;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        /* --- ZONA DE APLICACIONES (Uso de porcentajes para no buguearse) --- */
+        .apps-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly; /* Distribuye el espacio sobrante automáticamente */
+            align-items: center;
+            padding: 2vh 0 10vh 0; /* Espacio inferior para no pisar el buscador */
+            width: 100%;
+        }
+
+        .app-row {
+            display: flex;
+            justify-content: space-between;
+            width: 70%; 
+            align-items: center;
+        }
+
+        .app-row.center {
+            justify-content: center;
+        }
+
+        /* Íconos fluidos */
+        .app-icon {
+            width: 18vw; 
+            max-width: 85px;
+            height: auto;
+            object-fit: contain;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+
+        .app-icon:active {
+            transform: scale(0.92);
+        }
+
+        .icon-ai {
+            width: 30vw;
+            max-width: 140px;
+        }
+
+        .icon-yt {
+            width: 22vw; 
+            max-width: 100px;
+        }
+
+        /* --- BARRA DE BÚSQUEDA --- */
+        .search-wrapper {
+            position: absolute;
+            bottom: 40px; /* Separación fija desde abajo */
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 0 5vw;
+            z-index: 10;
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 450px;
+            background-color: #eef0f4;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .search-icon {
+            font-size: 1.2rem;
+            color: #8da3b8;
+            margin-right: 10px;
+        }
+
+        .search-input {
+            border: none;
+            background: transparent;
+            font-size: 16px; /* OBLIGATORIO: previene el zoom en móviles al escribir */
+            color: #333;
+            width: 100%;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: #8da3b8;
+            font-weight: 500;
+        }
+
+        /* --- BOTÓN DE DESCARGA APK --- */
+        .apk-btn {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: #007bff;
+            text-decoration: underline;
+            font-weight: bold;
+            z-index: 15;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <img src="interfaz_arriba.jpg" alt="Banner" class="header-bg">
+        <a href="#ajustes">
+            <img src="engranaje.png" alt="Ajustes" class="settings-btn">
+        </a>
+    </div>
+
+    <div class="apps-container">
+        
+        <div class="app-row">
+            <!-- Llamadas -->
+            <a href="tel:"><img src="callfamily.jpg" alt="Llamar" class="app-icon"></a>
+            <!-- Spotify App -->
+            <a href="spotify://"><img src="music.png" alt="Música" class="app-icon"></a>
+        </div>
+
+        <div class="app-row center">
+            <!-- La IA (Por ahora sin función hasta que la conectes de nuevo) -->
+            <a href="#"><img src="ai.png" alt="Asistente" class="app-icon icon-ai"></a>
+        </div>
+
+        <div class="app-row">
+            <!-- YouTube App -->
+            <a href="vnd.youtube://"><img src="watchvideo.png" alt="YouTube" class="app-icon icon-yt"></a>
+            <!-- Reloj/Alarmas -->
+            <a href="#reloj"><img src="clock.jpg" alt="Reloj" class="app-icon"></a>
+        </div>
+
+        <div class="app-row center">
+            <!-- WhatsApp App -->
+            <a href="whatsapp://app"><img src="message.png" alt="WhatsApp" class="app-icon"></a>
+        </div>
+
+    </div>
+
+    <div class="search-wrapper">
+        <form id="search-form" class="search-bar" action="https://www.google.com/search" method="GET">
+            <span class="search-icon">🔍</span>
+            <input type="text" name="q" class="search-input" placeholder="Buscar en Internet" autocomplete="off" required>
+        </form>
+    </div>
+
+    <!-- BOTÓN DESCARGA APK AUTOMÁTICA -->
+    <!-- Reemplaza el href="#" con el enlace directo a tu archivo .apk (Ej: "mis-archivos/Asistente.apk") -->
+    <a href="#" download="AsistenteIA.apk" class="apk-btn" id="descargar-apk">Instalar App (APK)</a>
+
+    <script>
+        // Control de Búsqueda
+        document.getElementById('search-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const query = document.querySelector('.search-input').value.trim();
+            if(query !== '') {
+                window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+            }
+        });
+
+        // Este script opcional simula un clic automático si quisieras que el APK 
+        // se descargue apenas entren a la web. Para activarlo, descomenta las siguientes 3 líneas:
+        
+        // window.onload = function() {
+        //    document.getElementById('descargar-apk').click();
+        // };
+    </script>
+</body>
+</html>
