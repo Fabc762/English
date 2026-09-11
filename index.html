@@ -38,6 +38,22 @@
             object-position: center;
         }
 
+        /* Botón de MediaFire Arriba */
+        .header-apk-btn {
+            position: absolute;
+            top: 20px;
+            left: 15px;
+            background-color: #007bff;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
         .settings-btn {
             position: absolute;
             top: 20px;
@@ -49,14 +65,14 @@
             z-index: 10;
         }
 
-        /* --- ZONA DE APLICACIONES (Uso de porcentajes para no buguearse) --- */
+        /* --- ZONA DE APLICACIONES --- */
         .apps-container {
             flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-evenly; /* Distribuye el espacio sobrante automáticamente */
+            justify-content: space-evenly; 
             align-items: center;
-            padding: 2vh 0 10vh 0; /* Espacio inferior para no pisar el buscador */
+            padding: 2vh 0 10vh 0; 
             width: 100%;
         }
 
@@ -98,7 +114,7 @@
         /* --- BARRA DE BÚSQUEDA --- */
         .search-wrapper {
             position: absolute;
-            bottom: 40px; /* Separación fija desde abajo */
+            bottom: 40px; 
             width: 100%;
             display: flex;
             justify-content: center;
@@ -126,7 +142,7 @@
         .search-input {
             border: none;
             background: transparent;
-            font-size: 16px; /* OBLIGATORIO: previene el zoom en móviles al escribir */
+            font-size: 16px; 
             color: #333;
             width: 100%;
             outline: none;
@@ -137,7 +153,7 @@
             font-weight: 500;
         }
 
-        /* --- BOTÓN DE DESCARGA APK --- */
+        /* --- BOTÓN DE DESCARGA APK (Abajo) --- */
         .apk-btn {
             position: absolute;
             bottom: 12px;
@@ -157,6 +173,8 @@
 
     <div class="header-container">
         <img src="interfaz_arriba.jpg" alt="Banner" class="header-bg">
+        <!-- Nuevo botón del APK arriba -->
+        <a href="https://www.mediafire.com/file/ugnh96tdhkq8ml1/app-debug.apk/file" target="_blank" class="header-apk-btn">Descargar APK</a>
         <a href="#ajustes">
             <img src="engranaje.png" alt="Ajustes" class="settings-btn">
         </a>
@@ -172,8 +190,8 @@
         </div>
 
         <div class="app-row center">
-            <!-- La IA (Por ahora sin función hasta que la conectes de nuevo) -->
-            <a href="#"><img src="ai.png" alt="Asistente" class="app-icon icon-ai"></a>
+            <!-- Link actualizado al repositorio de GitHub -->
+            <a href="https://github.com/Fabc762/AIInnovaEnglish" target="_blank"><img src="ai.png" alt="Asistente" class="app-icon icon-ai"></a>
         </div>
 
         <div class="app-row">
@@ -197,9 +215,8 @@
         </form>
     </div>
 
-    <!-- BOTÓN DESCARGA APK AUTOMÁTICA -->
-    <!-- Reemplaza el href="#" con el enlace directo a tu archivo .apk (Ej: "mis-archivos/Asistente.apk") -->
-    <a href="#" download="AsistenteIA.apk" class="apk-btn" id="descargar-apk">Instalar App (APK)</a>
+    <!-- BOTÓN DESCARGA APK (Actualizado a MediaFire por si también hacen clic abajo) -->
+    <a href="https://www.mediafire.com/file/ugnh96tdhkq8ml1/app-debug.apk/file" target="_blank" class="apk-btn" id="descargar-apk">Instalar App (APK)</a>
 
     <script>
         // Control de Búsqueda
@@ -210,13 +227,6 @@
                 window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(query);
             }
         });
-
-        // Este script opcional simula un clic automático si quisieras que el APK 
-        // se descargue apenas entren a la web. Para activarlo, descomenta las siguientes 3 líneas:
-        
-        // window.onload = function() {
-        //    document.getElementById('descargar-apk').click();
-        // };
     </script>
 </body>
 </html>
